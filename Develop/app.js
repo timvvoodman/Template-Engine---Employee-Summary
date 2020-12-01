@@ -10,9 +10,81 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+let roster = [];
+
+getEmployeeInfo();
 
 // Write code to use inquirer to gather information about the development team members,
+inquirer
+  .prompt([
+    /* Pass your questions in here */
+    {
+      type: "input",
+      message: "Enter employee name:",
+      name: "name",
+    },
+    {
+      type: "input",
+      message: "Enter employee ID?",
+      name: "id",
+    },
+    {
+      type: "input",
+      message: "Enter employee email:",
+      name: "email",
+    },
+    {
+      type: "list",
+      message: "Choose role:",
+      name: "role",
+      choices: ["Manager", "Engineer", "Intern"],
+    },
+    {
+      type: "input",
+      message: "Enter office Number:",
+      name: "officeNumber",
+      when: (answers) => {
+        return answers.role === "Manager";
+      },
+    },
+    {
+      type: "input",
+      message: "Enter engineer's GitHub username:",
+      name: "github",
+      when: (answers) => {
+        return answers.role === "Engineer";
+      },
+    },
+    {
+      type: "input",
+      message: "Enter intern's school",
+      name: "school",
+      when: (answers) => {
+        return answers.role === "Engineer";
+      },
+    },
+    {
+      type: "input",
+      message: "what is their office number",
+      name: "officeNumber",
+      when: (answers) => {
+        return answers.role === "Engineer";
+      },
+    },
+    {
+      type: "confirm",
+      name: "addEmployee",
+      message: "Would you like to add another employee?",
+    },
+  ])
+  .then((answers) => {
+    // Add employee to roster
+    const newEmployee = createObj;
+    // if yes to addEmlpoyee loop through prompt again
+  });
+
 // and to create objects for each team member (using the correct classes as blueprints!)
+function classObjects(obj) {}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
