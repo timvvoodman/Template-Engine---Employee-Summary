@@ -9,3 +9,5 @@ class Intern extends Employee {
     getRole(); //Overridden to return 'Intern'
   }
 }
+
+module.exports = Intern;

@@ -8,3 +8,5 @@ class Manager extends Employee {
     getOfficeNumber();
   }
 }
+
+module.exports = Manager;

@@ -15,76 +15,80 @@ let roster = [];
 getEmployeeInfo();
 
 // Write code to use inquirer to gather information about the development team members,
-inquirer
-  .prompt([
-    /* Pass your questions in here */
-    {
-      type: "input",
-      message: "Enter employee name:",
-      name: "name",
-    },
-    {
-      type: "input",
-      message: "Enter employee ID?",
-      name: "id",
-    },
-    {
-      type: "input",
-      message: "Enter employee email:",
-      name: "email",
-    },
-    {
-      type: "list",
-      message: "Choose role:",
-      name: "role",
-      choices: ["Manager", "Engineer", "Intern"],
-    },
-    {
-      type: "input",
-      message: "Enter office Number:",
-      name: "officeNumber",
-      when: (answers) => {
-        return answers.role === "Manager";
+function getEmployeeInfo() {
+  inquirer
+    .prompt([
+      /* Pass your questions in here */
+      {
+        type: "input",
+        message: "Enter employee name:",
+        name: "name",
       },
-    },
-    {
-      type: "input",
-      message: "Enter engineer's GitHub username:",
-      name: "github",
-      when: (answers) => {
-        return answers.role === "Engineer";
+      {
+        type: "input",
+        message: "Enter employee ID?",
+        name: "id",
       },
-    },
-    {
-      type: "input",
-      message: "Enter intern's school",
-      name: "school",
-      when: (answers) => {
-        return answers.role === "Engineer";
+      {
+        type: "input",
+        message: "Enter employee email:",
+        name: "email",
       },
-    },
-    {
-      type: "input",
-      message: "what is their office number",
-      name: "officeNumber",
-      when: (answers) => {
-        return answers.role === "Engineer";
+      {
+        type: "list",
+        message: "Choose role:",
+        name: "role",
+        choices: ["Manager", "Engineer", "Intern"],
       },
-    },
-    {
-      type: "confirm",
-      name: "addEmployee",
-      message: "Would you like to add another employee?",
-    },
-  ])
-  .then((answers) => {
-    // Add employee to roster
-    const newEmployee = createObj;
-    // if yes to addEmlpoyee loop through prompt again
-  });
+      {
+        type: "input",
+        message: "Enter office Number:",
+        name: "officeNumber",
+        when: (answers) => {
+          return answers.role === "Manager";
+        },
+      },
+      {
+        type: "input",
+        message: "Enter engineer's GitHub username:",
+        name: "github",
+        when: (answers) => {
+          return answers.role === "Engineer";
+        },
+      },
+      {
+        type: "input",
+        message: "Enter intern's school",
+        name: "school",
+        when: (answers) => {
+          return answers.role === "Intern";
+        },
+      },
+      {
+        type: "confirm",
+        name: "addEmployee",
+        message: "Would you like to add another employee?",
+      },
+    ])
+    .then((answers) => {
+      // Add employee to roster
+      const newEmployee = createObj;
+      // if yes to addEmlpoyee loop through prompt again
+    });
+}
 
 // and to create objects for each team member (using the correct classes as blueprints!)
-function classObjects(obj) {}
+function CreateClassObjects(obj) {
+  let employee;
+  if (obj.role === "Manager") {
+    employee = new Manager(obj.name, obj.id, obj.email, obj.officeNumber);
+  } else if (obj.role === "Engineer") {
+    employee = new Engineer(obj.name, obj.id, obj.email, obj.github);
+  } else if (obj.role === "Intern") {
+    employee = new Intern(obj.name, obj.id, obj.email, obj.school);
+  }
+  return employee;
+}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will

@@ -9,3 +9,5 @@ class Engineer extends Employee {
     getRole(); //Overridden to return 'Engineer'
   }
 }
+
+module.exports = Engineer;
