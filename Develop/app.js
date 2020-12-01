@@ -19,10 +19,25 @@ function getEmployeeInfo() {
   inquirer
     .prompt([
       /* Pass your questions in here */
+
       {
         type: "input",
         message: "Enter employee name:",
         name: "name",
+      },
+      {
+        type: "confirm",
+        name: "isManager",
+        message: "Is this employee the manager?",
+      },
+      {
+        type: "list",
+        message: "Choose role:",
+        name: "role",
+        choices: ["Engineer", "Intern"],
+        when: (answers) => {
+          return answers.isManager === true;
+        },
       },
       {
         type: "input",
@@ -33,12 +48,6 @@ function getEmployeeInfo() {
         type: "input",
         message: "Enter employee email:",
         name: "email",
-      },
-      {
-        type: "list",
-        message: "Choose role:",
-        name: "role",
-        choices: ["Manager", "Engineer", "Intern"],
       },
       {
         type: "input",
@@ -72,15 +81,19 @@ function getEmployeeInfo() {
     ])
     .then((answers) => {
       // Add employee to roster
-      const newEmployee = createObj;
+      const employee = CreateClassObjects(answers);
+      roster.push(employee);
       // if yes to addEmlpoyee loop through prompt again
+      if (answers.addEmployee) getEmployeeInfo();
+      else {
+      } // END HERE HOW TO VERIFY MANAGER?
     });
 }
 
 // and to create objects for each team member (using the correct classes as blueprints!)
 function CreateClassObjects(obj) {
   let employee;
-  if (obj.role === "Manager") {
+  if (obj.isManager === true) {
     employee = new Manager(obj.name, obj.id, obj.email, obj.officeNumber);
   } else if (obj.role === "Engineer") {
     employee = new Engineer(obj.name, obj.id, obj.email, obj.github);
