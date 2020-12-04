@@ -34,7 +34,7 @@ To Contribute...
 1. Fork this repository
 2. Create a new branch
 3. Commit/push your changes
-4. Create a new pull request
+4. Create a new pull request. _Please email me if I do not respond to your pull request_
 
 ## Test
 
