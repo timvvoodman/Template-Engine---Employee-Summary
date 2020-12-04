@@ -1,6 +1,6 @@
 # Sample Title
 
-![License: MIT License](https://img.shields.io/badge/License-MIT License-blue) ![](https://img.shields.io/github/languages/code-size/timvvoodman/Template-Engine---Employee-Summary?label=Repo%20Size)
+![License: MIT License](https://img.shields.io/github/license/timvvoodman/Template-Engine---Employee-Summary) ![](https://img.shields.io/github/languages/code-size/timvvoodman/Template-Engine---Employee-Summary?label=Repo%20Size)
 
 ## Description
 
