@@ -28,6 +28,7 @@ Inquierer package required: `npm install inquierer`
 3. Open file named `team.html` to view the webpage with your team
 
 DEMO VIDEO (_Click link to YouTube_)
+[![Alt text](https://img.youtube.com/vi/VID/0.jpg)](https://www.youtube.com/watch?v=mIgcJ9jqfDY&feature=youtu.be)
 
 # Contributing
 
